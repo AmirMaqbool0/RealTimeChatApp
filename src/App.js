@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import  { auth } from './firebase'
+import SignIn from './Components/SignIn/SignIn'
+import Chat from './Components/Chat/Chat'
+import { onAuthStateChanged } from 'firebase/auth'
+
 
 function App() {
+  const [isSignin, setIsSignin] = useState()
+    onAuthStateChanged(auth,function(user){
+      if(user){
+        setIsSignin(true)
+        console.log('SignIn')
+      }
+      else{
+        setIsSignin(false)
+        console.log('Not SignIn')
+      }
+    })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+    {
+      isSignin ? <Chat/> :  <SignIn/>
+    }
+   
+    </>
+  )
 }
 
-export default App;
+export default App

@@ -1,0 +1,18 @@
+.signin-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color:  #05091F;
+}
+.signin-container button{
+    height: 70px;
+    width: 240px;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: "Madimi One", sans-serif;
+}
